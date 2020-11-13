@@ -1,4 +1,5 @@
 package com._7evenUp;
+import java.util.Scanner;
 
 public class OverallCommodity extends Commodity {
     double height, width, length;
@@ -27,5 +28,30 @@ public class OverallCommodity extends Commodity {
         resultString += String.format("Length: %.2f\n", length);
 
         return resultString;
+    }
+
+    public static OverallCommodity makeNewOverallCommodity(Scanner input) {
+        System.out.println("\u001b[31m" + "Программное создание класса OverralCommodity" + "\u001b[0m");
+
+        System.out.println("Введите код продукта:");
+        int newCode = input.nextInt();
+        System.out.println("Введите название продукта:");
+        String newName = input.nextLine();
+        System.out.println("Введите описание продукта:");
+        String newDesc = input.nextLine();
+        System.out.println("Введите оптовую цену продукта:");
+        double newWholesalePrice = input.nextFloat();
+        System.out.println("Введите розничную цену продукта:");
+        double newRetailPrice = input.nextFloat();
+        System.out.println("Введите высоту продукта:");
+        double newHeight = input.nextFloat();
+        System.out.println("Введите ширину продукта:");
+        double newWidth = input.nextFloat();
+        System.out.println("Введите длину продукта:");
+        double newLength = input.nextFloat();
+
+        return new OverallCommodity(newCode, newName, newDesc,
+                                    newWholesalePrice, newRetailPrice,
+                                    newHeight, newWidth, newLength);
     }
 }

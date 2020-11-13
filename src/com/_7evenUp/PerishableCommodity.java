@@ -1,4 +1,5 @@
 package com._7evenUp;
+import java.util.Scanner;
 
 public class PerishableCommodity extends Commodity {
     double timeToServe;

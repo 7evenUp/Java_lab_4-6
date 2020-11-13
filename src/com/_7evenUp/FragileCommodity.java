@@ -1,4 +1,5 @@
 package com._7evenUp;
+import java.util.Scanner;
 
 public class FragileCommodity extends Commodity {
     double fragileCoefficient;
