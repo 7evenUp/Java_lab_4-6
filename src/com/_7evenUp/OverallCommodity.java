@@ -33,11 +33,13 @@ public class OverallCommodity extends Commodity {
     public static OverallCommodity makeNewOverallCommodity(Scanner input) {
         System.out.println("\u001b[31m" + "Программное создание класса OverralCommodity" + "\u001b[0m");
 
+        System.out.println("Введите название продукта:");
+        input.nextLine();
+        String newName = input.nextLine();
         System.out.println("Введите код продукта:");
         int newCode = input.nextInt();
-        System.out.println("Введите название продукта:");
-        String newName = input.nextLine();
         System.out.println("Введите описание продукта:");
+        input.nextLine();
         String newDesc = input.nextLine();
         System.out.println("Введите оптовую цену продукта:");
         double newWholesalePrice = input.nextFloat();

@@ -1,7 +1,8 @@
 package com._7evenUp;
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Commodity {
+public class Commodity implements Serializable {
     UUID id;
     int productCode;
     String name, desc;

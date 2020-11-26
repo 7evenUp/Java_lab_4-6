@@ -1,11 +1,14 @@
 package com._7evenUp;
 
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        CommodityList commodities = new CommodityList();
+        CommodityList downloadedCommodities = new CommodityList();
         showMenu();
 
         while (true) {
@@ -16,44 +19,39 @@ public class Main {
                 System.exit(0);
             }
             else if (menuItem == 1) {
-
+                commodities.PrintList();
             }
             else if (menuItem == 2) {
-
+                FragileCommodity oc = FragileCommodity.makeNewFragileCommodity(scanner);
+                System.out.println(oc);
+                commodities.AddToList(oc);
             }
             else if (menuItem == 3) {
-
+                PerishableCommodity oc = PerishableCommodity.makeNewPerishableCommodity(scanner);
+                System.out.println(oc);
+                commodities.AddToList(oc);
             }
             else if (menuItem == 4) {
                 OverallCommodity oc = OverallCommodity.makeNewOverallCommodity(scanner);
                 System.out.println(oc);
+                commodities.AddToList(oc);
             }
             else if (menuItem == 5) {
-
+                try (ObjectOutputStream outStream = new ObjectOutputStream(new FileOutputStream("output.out"))) {
+                    outStream.writeObject(commodities);
+                } catch (Exception err) {
+                    System.out.println(err.getMessage());
+                }
             }
             else if (menuItem == 6) {
-
+                try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("output.out"))) {
+                    commodities = (CommodityList)inputStream.readObject();
+                } catch (Exception err) {
+                    System.out.println(err.getMessage());
+                }
             }
             showMenu();
         }
-
-
-//	    FragileCommodity fragile = new FragileCommodity(1, "Fanera",
-//                                                        "Very hrupkaya thing", 300,
-//                                                        400, 2.1);
-//        PerishableCommodity perishable = new PerishableCommodity(2, "Milk",
-//                                                        "Liquid with white color", 50,
-//                                                        70, 5);
-//        OverallCommodity overall = new OverallCommodity(3, "Computer",
-//                                                        "Just a thing", 3000,
-//                                                        5000, 1.6, .9, .1);
-//
-//        CommodityList commodityList = new CommodityList();
-//        commodityList.AddToList(fragile);
-//        commodityList.AddToList(perishable);
-//        commodityList.AddToList(overall);
-//
-//        commodityList.PrintList();
     }
 
     private static void showMenu() {

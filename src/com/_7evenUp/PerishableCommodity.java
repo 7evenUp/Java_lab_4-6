@@ -19,4 +19,26 @@ public class PerishableCommodity extends Commodity {
 
         return resultString;
     }
+
+    public static PerishableCommodity makeNewPerishableCommodity(Scanner input) {
+        System.out.println("\u001b[31m" + "Программное создание класса PerishableCommodity" + "\u001b[0m");
+
+        System.out.println("Введите название продукта:");
+        input.nextLine();
+        String newName = input.nextLine();
+        System.out.println("Введите код продукта:");
+        int newCode = input.nextInt();
+        System.out.println("Введите описание продукта:");
+        input.nextLine();
+        String newDesc = input.nextLine();
+        System.out.println("Введите оптовую цену продукта:");
+        double newWholesalePrice = input.nextFloat();
+        System.out.println("Введите розничную цену продукта:");
+        double newRetailPrice = input.nextFloat();
+        System.out.println("Введите срок хранения:");
+        double newTimeToServe = input.nextFloat();
+
+        return new PerishableCommodity(newCode, newName, newDesc,
+                                    newWholesalePrice, newRetailPrice, newTimeToServe);
+    }
 }
